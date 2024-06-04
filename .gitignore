@@ -1,0 +1,27 @@
+build
+vendor
+benchdata
+.DS_Store
+sygma-tools
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, build with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+*.json
+# IDE
+.idea/*
+!.idea/copyright/
+!.idea/codeStyles/
+*.swp
+.vscode/*.json
+
+# Test fixtures
+test/*fixtures/*.json

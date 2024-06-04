@@ -1,0 +1,75 @@
+// Copyright © 2019 Binance
+//
+// This file is part of Binance. The full Binance copyright notice, including
+// terms governing use, modification, and redistribution, is contained in the
+// file LICENSE at the root of the source code distribution tree.
+
+syntax = "proto3";
+package binance.tsslib.ecdsa.keygen;
+option go_package = "ecdsa/keygen";
+
+/*
+ * Represents a BROADCAST message sent during Round 1 of the ECDSA TSS keygen protocol.
+ */
+ message KGRound1Message {
+   bytes sid = 1;
+   bytes ViKeygen = 2;
+   bytes ssid = 3;
+   bytes ViKeyRefresh = 4;
+}
+
+/*
+ * Represents a BROADCAST message sent during Round 1 of the ECDSA TSS keygen protocol.
+ */
+message KGRound2Message {
+  bytes sid = 1;
+  bytes ridi = 2;
+  bytes ui = 3;
+  bytes paillier_n = 4;
+  repeated bytes XiKeygen = 5;
+  repeated bytes AiKeygen = 6;
+  repeated bytes vs = 7;
+
+  // Refresh:
+  bytes ssid = 8;
+  repeated bytes XiRefresh = 9;
+  repeated bytes AiRefresh = 10;
+  repeated bytes Yi = 11;
+  repeated bytes Bi = 12;
+  bytes Ni = 13;
+  bytes si = 14;
+  bytes ti = 15;
+  repeated bytes psii_proof = 16;
+  bytes rhoi = 17;
+}
+
+/*
+ * Represents a P2P message sent to each party during Round 3 of the ECDSA TSS keygen and key refresh protocols.
+ */
+message KGRound3Message {
+  bytes sid = 1;
+  repeated bytes psii_sch_proof = 2;
+
+  // refresh:
+  bytes ssid = 3;
+  repeated bytes psii_mod_proof = 4;
+  repeated bytes phiji_proof = 5;
+  repeated bytes pii_proof = 6;
+  bytes Cvssji = 7;
+  bytes randCvssji = 8;
+  bytes Czeroji = 9;
+  bytes randCzeroji = 10;
+  repeated bytes psiji_proof = 11;
+}
+
+/*
+ * Represents a BROADCAST message sent to all parties during Round 4 of the ECDSA TSS keygen protocol.
+ */
+message KGRound4Message {
+  bytes sid = 1;
+  bool abort = 2;
+  bytes mu = 3;
+  int32 culpritPj = 4;
+  bytes Cji = 5;
+  bytes xji = 6;
+}
