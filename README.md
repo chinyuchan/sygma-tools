@@ -22,7 +22,7 @@ Flags:
 
 ## Run
 ```
-./sygma-relayer ecdsa -p 3 -t 1
+./sygma-tools ecdsa -p 3 -t 1
 ```
 ## Result
 The result json file in `test/_ecdsa_fixtures`.
